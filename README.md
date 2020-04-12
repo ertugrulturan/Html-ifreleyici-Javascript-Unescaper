@@ -1,2 +1,3 @@
-# Html-ifreleyici-Javascript-Unescaper
-Html Şifreleyici / Javascript Unescaper
+# Html Şifreleyici / Javascript Unescaper
+By NinjaNetwork - Obir.Ninja
+---
