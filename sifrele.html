@@ -1,0 +1,57 @@
+<div class="col-md-10"><div class="content-box-header">
+		  					<div class="panel-title">Html Şifreleyici / Javascript Unescaper</div></div>
+<div class="content-box-large box-with-header">
+<script type="text/javascript">
+function doencrypt(code) {
+	enctext=encrypt(code);
+	codetocopy="<script type=\"text/javascript\">\n";
+	codetocopy+="<!-- html şifreleyici obir.ninja -->\n";
+	codetocopy+="document.write(unescape('"+enctext+"'));\n";
+	codetocopy+="</script\>";
+	return codetocopy;
+} 
+function encrypt(tx) {
+	var hex='';
+	var i;
+	for (i=0; i<tx.length; i++) {
+		hex += '%'+hexfromdec(tx.charCodeAt(i))
+	}
+	return hex;
+}
+
+function hexfromdec(num) {
+	if (num > 65535) { return ("hata") }
+	first = Math.round(num/4096 - .5);
+	temp1 = num - first * 4096;
+	second = Math.round(temp1/256 -.5);
+	temp2 = temp1 - second * 256;
+	third = Math.round(temp2/16 - .5);
+	fourth = temp2 - third * 16;
+	return (""+getletter(third)+getletter(fourth));
+}
+
+function getletter(num) {
+	if (num < 10) { return num; } 
+	else 
+	{ 
+	if (num == 10) { return "A" } 
+	if (num == 11) { return "B" } 
+	if (num == 12) { return "C" } if (num == 13) { return "D" } if (num == 14) { return "E" } if (num == 15) { return "F" } }
+} 
+
+function encrypt_it(){
+	if ( !jQuery('#html').val() ) {alert('Lütfen html kodunu giriniz'); return false;}
+	jQuery('#html').val(doencrypt(jQuery('#html').val()));
+}
+</script>
+
+
+<p>
+	<label>Şifrelenecek HTML Kod:</label><br />
+	<textarea id="html" class="form-control" name="html" rows="20"></textarea><br />
+	<center><input id="submit" class="form-control" type="button" value="Şifrele" onclick="encrypt_it()"/></center>
+</p>
+
+<div class="sorgu_sonuc"></div>
+<br>
+<br>
